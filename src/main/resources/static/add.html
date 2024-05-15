@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" name="a" id="a" value="0"> +
+<input type="number" name="b" id="b" value="0">
+<input type="button" name="button" value="=" id="evaluate">
+<span id="c"></span>
+</body>
+<script>
+    document.querySelector("#evaluate").onclick = function () {
+        var a = document.querySelector('#a').value;
+        var b = document.querySelector('#b').value;
+        fetch('http://localhost:8080/add?a=' + a + '&b=' + b)
+            .then(resp => resp.text())
+            .then(text => document.querySelector('#c').innerHTML = text);
+    }
+</script>
+</html>

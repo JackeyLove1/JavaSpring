@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    function test1() {
+        document.getElementById("error").innerHTML = "";
+        const p = document.getElementById("principal").value
+        const m = document.getElementById("months").value
+        if (p <= 0 || m <= 0) {
+            document.getElementById("error").innerHTML = "Enter a positive number";
+            return;
+        }
+        const yr = document.getElementById("annualInterestRate").value;
+        fetch(`http://localhost:8080/calculate?p={p}&m={m}&yr={yr}`)
+            .then(resp => resp.text())
+            .then(text => {
+                if (isJson(text)){
+                    let json = JSON.parse(text);
+                    if (json.status === 404 || json.status === 500) {
+                        document.getElementById("error").innerHTML = json.message;
+                    } else {
+                        document.getElementById("error").innerHTML = "";
+                        document.getElementById("result").innerHTML = text;
+                    }
+                }
+            })
+    }
+</script>
+</html>
