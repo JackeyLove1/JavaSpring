@@ -1,6 +1,8 @@
 package com.example.helloworld.mapper;
 
-public class Student {
+import java.util.Objects;
+
+public class Student implements Cloneable {
     private int id;
     private String name;
     private int age;
@@ -45,5 +47,23 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return id == student.id && age == student.age && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
