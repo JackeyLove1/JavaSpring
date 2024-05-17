@@ -2,7 +2,7 @@ package com.example.helloworld.mapper;
 
 import java.util.Objects;
 
-public class Student implements Cloneable {
+public class Student implements Cloneable, Comparable {
     private int id;
     private String name;
     private int age;
@@ -37,7 +37,8 @@ public class Student implements Cloneable {
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + name +
+                ", age=" + age +
                 '}';
     }
 
@@ -65,5 +66,14 @@ public class Student implements Cloneable {
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Student) {
+            Student student = (Student) o;
+            return this.getAge() - student.getAge();
+        }
+        return 0;
     }
 }
