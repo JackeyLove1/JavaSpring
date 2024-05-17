@@ -1,14 +1,12 @@
 package com.example.helloworld;
 
 import com.example.helloworld.threads.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.*;
 
 @SpringBootTest
 public class TestFilesIO {
@@ -122,4 +120,24 @@ public class TestFilesIO {
     }
 
 
+    @Test
+    public void TestThreadProducerConsumer() throws InterruptedException {
+        var queue = new ArrayBlockingQueue<Integer>(10) {};
+        var producer = new MyProducer(queue);
+        var consumer = new MyConsumer(queue);
+        new Thread(producer).start();
+        new Thread(consumer).start();
+        new Thread(consumer).start();
+        Thread.sleep(1000);
+    }
+
+    @BeforeEach
+    public void setup() {
+        System.out.println("Setup");
+    }
+
+    @AfterEach
+    public void teardown() {
+        System.out.println("Teardown");
+    }
 }

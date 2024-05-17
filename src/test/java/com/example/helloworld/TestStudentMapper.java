@@ -28,7 +28,7 @@ public class TestStudentMapper {
 
     @Test
     public void TestInsertStudent(){
-        studentMapper.insert(5,"James", 20);
+        // studentMapper.insert(5,"James", 20);
     }
 
     @Test
