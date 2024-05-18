@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.service;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;

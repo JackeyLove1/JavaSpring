@@ -3,6 +3,8 @@ package com.example.helloworld;
 import com.example.helloworld.threads.MyWaitAndNotify;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.SimpleDateFormat;
@@ -13,6 +15,8 @@ import java.util.stream.Stream;
 
 @SpringBootTest
 public class TestThreads {
+    private static final Logger log = LoggerFactory.getLogger(TestThreads.class);
+
     @Test
     public void TestObjectLock() throws InterruptedException {
         new Thread(new MyWaitAndNotify.ThreadA()).start();
@@ -144,6 +148,6 @@ public class TestThreads {
                 Thread.currentThread().interrupt();
             }
         }, 5, TimeUnit.SECONDS);
-
     }
+
 }

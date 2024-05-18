@@ -1,14 +1,16 @@
-package com.example.helloworld;
+package com.example.helloworld.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HelloController {
-    @RequestMapping("/hello")
+public class AddController {
+    @RequestMapping("/add")
     @ResponseBody
-    public String hello(String name) {
-        return "Hello, " + name + "!";
+    public int add(int a, int b) {
+        return a + b;
     }
+
+
 }
