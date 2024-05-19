@@ -3,6 +3,11 @@ package com.example.helloworld.util;
 import com.example.helloworld.dto.Result;
 
 public class ResultUtil {
+
+    public static <T> Result<T> success(){
+        return new Result<>("success", null, 200);
+    }
+
     public static <T> Result<T> success(T data) {
         return new Result<T>("success", data, 200);
     }

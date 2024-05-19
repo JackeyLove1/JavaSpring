@@ -66,3 +66,10 @@ set name       = 'jacky',
     phone      = '1234567890',
     entry_date = '2024-01-01'
 where id = 1;
+
+select *
+from Customer
+where name = '%J%'
+  and gender = '1'
+  and entry_date between '1900-01-01' and '2024-01-01'
+order by update_time desc;

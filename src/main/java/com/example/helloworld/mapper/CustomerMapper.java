@@ -2,8 +2,13 @@ package com.example.helloworld.mapper;
 
 import com.example.helloworld.pojo.Customer;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Mapper
+@Component
 public interface CustomerMapper {
 
     @Delete("delete from customer where id = #{id}")
@@ -28,4 +33,27 @@ public interface CustomerMapper {
 
     @Select("select * from customer where id = #{id}")
     public Customer getById(Integer id);
+
+    @Select("""
+            select *
+            from Customer
+            where name = concat('%', #{name}, '%')
+              and gender = #{gender}
+              and entry_date between #{begin} and #{end}
+            order by update_time desc
+            """)
+    public List<Customer> listByName(String name, Short gender, LocalDate begin, LocalDate end);
+
+    List<Customer> list(String name, Short gender, LocalDate begin, LocalDate end);
+
+    void updateById(Customer customer);
+
+    void deleteByIds(Integer[] ids);
+
+    List<Customer> listAllCustomers();
+
+    Long count();
+
+    @Select("select * from customer limit #{start}, #{pageSize}")
+    List<Customer> page(Integer start, Integer pageSize);
 }

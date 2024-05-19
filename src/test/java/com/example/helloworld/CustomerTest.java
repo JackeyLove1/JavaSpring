@@ -46,7 +46,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void testUpdate(){
+    public void testUpdate() {
         Customer customer = new Customer();
         customer.setId(1);
         customer.setAge((short) random.nextInt(1, 100));
@@ -59,8 +59,47 @@ public class CustomerTest {
     }
 
     @Test
-    public void testSelect(){
+    public void testSelect() {
         Customer customer = customerMapper.getById(1);
         System.out.println(customer);
+    }
+
+    @Test
+    public void testListByName() {
+        customerMapper.listByName("z", (short) 1, LocalDate.of(1900, 1, 1), LocalDate.of(2025, 1, 1))
+                .stream().forEach(customer1 -> {
+                    System.out.println(customer1);
+                });
+    }
+
+    @Test
+    public void testList() {
+        customerMapper.list("c", (short) 1, LocalDate.of(1900, 1, 1), LocalDate.of(2025, 1, 1))
+                .stream().forEach(customer1 -> {
+                    System.out.println(customer1);
+                });
+
+        customerMapper.list("c", null, null, null)
+                .stream().forEach(customer1 -> {
+                    System.out.println(customer1);
+                });
+
+        customerMapper.list(null, (short)0, null, null)
+                .stream().forEach(customer1 -> {
+                    System.out.println(customer1);
+                });
+    }
+
+    @Test
+    public void testUpdateById(){
+        Customer customer1 = new Customer();
+        customer1.setId(1);
+        customer1.setName("zhangsan");
+        customerMapper.updateById(customer1);
+    }
+
+    @Test
+    public void testDeleteByIds(){
+        customerMapper.deleteByIds(new Integer[]{1,2,3});
     }
 }
