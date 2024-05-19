@@ -16,7 +16,9 @@ public class TestStudentMapper {
     @Test
     public void TestPrintAllStudent(){
         List<Student> students = studentMapper.findAll();
-        students.forEach(System.out::println);
+        students.stream().forEach(user -> {
+            System.out.println(user);
+        });
     }
 
     @Test
