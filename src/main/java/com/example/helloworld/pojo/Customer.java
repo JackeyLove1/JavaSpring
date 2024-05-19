@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,4 +19,7 @@ public class Customer {
     private Short age;
     private Short gender;
     private String phone;
+    private LocalDate entryDate;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
 }
