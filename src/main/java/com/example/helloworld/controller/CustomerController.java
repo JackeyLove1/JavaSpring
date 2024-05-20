@@ -53,4 +53,5 @@ public class CustomerController {
     public Result<Long> count() {
         return ResultUtil.success(customerService.count());
     }
+
 }
