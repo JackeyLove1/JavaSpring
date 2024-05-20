@@ -56,4 +56,7 @@ public interface CustomerMapper {
 
     @Select("select * from customer limit #{start}, #{pageSize}")
     List<Customer> page(Integer start, Integer pageSize);
+
+    @Select("select * from customer where username = #{username} and password = #{password}")
+    Customer login(Customer customer);
 }

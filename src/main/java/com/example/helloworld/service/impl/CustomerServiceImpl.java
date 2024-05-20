@@ -39,4 +39,9 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> page(Integer page, Integer pageSize) {
         return customerMapper.page(page, pageSize);
     }
+
+    @Override
+    public Customer Login(Customer customer) {
+        return customerMapper.login(customer);
+    }
 }

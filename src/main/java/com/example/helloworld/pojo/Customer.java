@@ -22,4 +22,7 @@ public class Customer {
     private LocalDate entryDate;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
+    private String username;
+    private String password;
+    private String avatar;
 }

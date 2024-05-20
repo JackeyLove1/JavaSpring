@@ -16,4 +16,6 @@ public interface CustomerService {
     Long count();
 
     List<Customer> page(Integer page, Integer pageSize);
+
+    Customer Login(Customer customer);
 }

@@ -42,11 +42,13 @@ DROP TABLE IF EXISTS Customer;
 CREATE TABLE IF NOT EXISTS Customer
 (
     id          INT AUTO_INCREMENT PRIMARY KEY,                                  -- Unique identifier for each customer
-    name        VARCHAR(100) NOT NULL,                                           -- Customer's name, cannot be null
-    age         SMALLINT     NOT NULL CHECK (age >= 0 AND age <= 120),           -- Customer's age with a constraint to be between 0 and 120
-    gender      TINYINT      NOT NULL CHECK (gender IN (0, 1)),                  -- Customer's gender with predefined options (0 for male, 1 for female, or customize as needed)
-    phone       VARCHAR(20)  NOT NULL,                                           -- Customer's phone number, cannot be null
-    entry_date  DATE         NOT NULL,                                           -- Customer's entry date, cannot be null
+    name        VARCHAR(100)   NOT NULL,                                         -- Customer's name, cannot be null
+    age         SMALLINT       NOT NULL CHECK (age >= 0 AND age <= 120),         -- Customer's age with a constraint to be between 0 and 120
+    gender      TINYINT        NOT NULL CHECK (gender IN (0, 1)),                -- Customer's gender with predefined options (0 for male, 1 for female, or customize as needed)
+    phone       VARCHAR(20)    NOT NULL,                                         -- Customer's phone number, cannot be null
+    username    VARBINARY(100) NOT NULL UNIQUE ,
+    password    VARBINARY(100) NOT NULL,
+    entry_date  DATE           NOT NULL,                                         -- Customer's entry date, cannot be null
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,                             -- Automatically set to current timestamp upon creation
     update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- Automatically updated to current timestamp on update
     CONSTRAINT chk_age CHECK (age >= 0 AND age <= 120)                           -- Ensures age is within a realistic range
@@ -54,10 +56,11 @@ CREATE TABLE IF NOT EXISTS Customer
 
 -- Add an index on the phone column to improve search performance
 CREATE INDEX idx_phone ON Customer (phone);
+CREATE INDEX idx_username ON Customer (username);
 
-INSERT INTO Customer (name, age, gender, phone, entry_date)
-VALUES ('John Doe', 30, 0, '123-456-7890', '2024-01-01'),
-       ('Jane Smith', 25, 1, '098-765-4321', '2024-02-01');
+INSERT INTO Customer (name, age, gender, phone, entry_date, username, password)
+VALUES ('John Doe', 30, 0, '123-456-7890', '2024-01-01', 'Jane Smith', '12345'),
+       ('Jane Smith', 25, 1, '098-765-4321', '2024-02-01', 'Jane Smith', '12345');
 
 update customer
 set name       = 'jacky',
