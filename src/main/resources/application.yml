@@ -1,14 +1,29 @@
+spring:
+  application:
+    name: helloworld
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: ""
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
 server:
-  address: 0.0.0.0
   port: 8080
+  error:
+    include-message: always
 
-user:
-  name: Jacky
-  age: 18
-  address:
-    city: Beijing
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-hobby:
-  - football
-  - basketball
-  - running
+# self config
+aliyun:
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    accessKeyId: LTAI4GKzjKQfjK8XjJjyVQvh
+    accessKeySecret: jzK06Rl1KzjKQfjK8XjJjyVQvh
+    bucketName: test-bucket-name

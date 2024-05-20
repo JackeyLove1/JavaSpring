@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,14 +18,11 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ConfigurationProperties(prefix = "aliyun.oss")
 public class AliOSSUtils {
-    @Value("${aliyun.oss.bucket-name}")
     private String bucketName;
-    @Value("${aliyun.oss.endpoint}")
     private String endpoint;
-    @Value("${aliyun.oss.access-key-id}")
     private String accessKeyId;
-    @Value("${aliyun.oss.access-key-secret}")
     private String accessKeySecret;
 
     public String upload(MultipartFile file) throws IOException {
