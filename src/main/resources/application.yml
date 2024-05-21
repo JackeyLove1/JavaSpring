@@ -27,3 +27,6 @@ aliyun:
     accessKeyId: LTAI4GKzjKQfjK8XjJjyVQvh
     accessKeySecret: jzK06Rl1KzjKQfjK8XjJjyVQvh
     bucketName: test-bucket-name
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug

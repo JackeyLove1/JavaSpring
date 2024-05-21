@@ -7,7 +7,9 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.beans.Transient;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Random;
@@ -99,6 +101,7 @@ public class CustomerTest {
     }
 
     @Test
+    @Transactional
     public void testDeleteByIds(){
         customerMapper.deleteByIds(new Integer[]{1,2,3});
     }
