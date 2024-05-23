@@ -2,11 +2,13 @@ package com.example.helloworld.mapper;
 
 import com.example.helloworld.pojo.Customer;
 import org.apache.ibatis.annotations.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Scope("prototype")
 @Mapper
 @Component
 public interface CustomerMapper {
