@@ -23,7 +23,6 @@ public class BeanTest {
 
         CustomerController customerController2 = (CustomerController) applicationContext.getBean(CustomerController.class);
         System.out.println(customerController2);
-
     }
 
     @Autowired
