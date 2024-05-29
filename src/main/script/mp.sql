@@ -1,6 +1,6 @@
 use test;
 
-drop table if exists mp;
+drop table if exists tb_user;
 
 create table tb_user(
     id bigint not null auto_increment,
